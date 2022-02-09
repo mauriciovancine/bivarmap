@@ -5,6 +5,8 @@ bivarmap_map <- function(bivarmap, colmat,
                          x_legend_size = .2,
                          y_legend_size = .2){
 
+    library(ggplot2)
+
     # Convert to dataframe for plotting with ggplot
     bivarmap_data <- raster::as.data.frame(bivarmap, xy = TRUE)
     colnames(bivarmap_data)[3] <- "bivarmap_values"
