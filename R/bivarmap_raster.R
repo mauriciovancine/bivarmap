@@ -2,9 +2,11 @@
 bivarmap_raster <- function(rasterx, rastery, colourmatrix = col.matrix,
                           export.colour.matrix = TRUE,
                           outname = paste0("colMatrix_rasValues", names(rasterx))) {
+
     # TO DO - replace raster with terra #
     require(raster)
     require(classInt)
+
     # export.colour.matrix will export a data.frame of rastervalues and RGB codes
     # to the global environment outname defines the name of the data.frame
     quanx <- getValues(rasterx)
