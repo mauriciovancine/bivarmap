@@ -1,5 +1,4 @@
-# Function to assign colour-codes to raster data
-# As before, by default assign tercile breaks
+#' @export
 bivarmap_raster <- function(rasterx, rastery, colourmatrix = col.matrix,
                           export.colour.matrix = TRUE,
                           outname = paste0("colMatrix_rasValues", names(rasterx))) {

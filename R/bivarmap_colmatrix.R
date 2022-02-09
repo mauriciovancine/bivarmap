@@ -1,4 +1,4 @@
-# The function that produces the colour matrix
+#' @export
 bivarmap_colmatrix <- function(nbreaks = 3,
                                breakstyle = "quantile",
                                upperleft = "#0096EB",
