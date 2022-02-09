@@ -17,4 +17,5 @@ Imports:
     dplyr,
     classInt,
     cowplot,
-    raster
+    raster,
+    magrittr

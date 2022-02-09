@@ -10,10 +10,6 @@ bivarmap_colmatrix <- function(nbreaks = 3,
                                plotLeg = TRUE,
                                saveLeg = FALSE) {
 
-    usethis::use_package("dplyr")
-    usethis::use_package("ggplot2")
-    usethis::use_package("classInt")
-
     if (breakstyle == "sd") {
         warning("SD breaks style cannot be used.\nWill not always return the correct number of breaks.\nSee classInt::classIntervals() for details.\nResetting to quantile",
                 call. = FALSE, immediate. = FALSE)
@@ -56,30 +52,30 @@ bivarmap_colmatrix <- function(nbreaks = 3,
     ## need to convert this to data.table at some stage.
     col.matrix.plot <- col.matrix %>%
         as.data.frame(.) %>%
-        mutate("Y" = row_number()) %>%
-        mutate_at(.tbl = ., .vars = vars(starts_with("V")), .funs = list(as.character)) %>%
-        pivot_longer(data = ., cols = -Y, names_to = "X", values_to = "HEXCode") %>%
-        mutate("X" = as.integer(sub("V", "", .$X))) %>%
-        distinct(as.factor(HEXCode), .keep_all = TRUE) %>%
-        mutate(Y = rev(.$Y)) %>%
+        dplyr::mutate("Y" = dplyr::row_number()) %>%
+        dplyr::mutate_at(.tbl = ., .vars = dplyr::vars(starts_with("V")), .funs = list(as.character)) %>%
+        tidyr::pivot_longer(data = ., cols = -Y, names_to = "X", values_to = "HEXCode") %>%
+        dplyr::mutate("X" = as.integer(sub("V", "", .$X))) %>%
+        dplyr::distinct(as.factor(HEXCode), .keep_all = TRUE) %>%
+        dplyr::mutate(Y = rev(.$Y)) %>%
         dplyr::select(-c(4)) %>%
-        mutate("Y" = rep(seq(from = 1, to = nbreaks, by = 1), each = nbreaks),
-               "X" = rep(seq(from = 1, to = nbreaks, by = 1), times = nbreaks)) %>%
-        mutate("UID" = row_number())
+        dplyr::mutate("Y" = rep(seq(from = 1, to = nbreaks, by = 1), each = nbreaks),
+                      "X" = rep(seq(from = 1, to = nbreaks, by = 1), times = nbreaks)) %>%
+        dplyr::mutate("UID" = dplyr::row_number())
 
     # Use plotLeg if you want a preview of the legend
     if (plotLeg) {
-        p <- ggplot(col.matrix.plot, aes(X, Y, fill = HEXCode)) +
-            geom_tile() +
-            scale_fill_identity() +
-            coord_equal(expand = FALSE) +
-            theme_void() +
-            theme(aspect.ratio = 1,
-                  axis.title = element_text(size = 12, colour = "black",
-                                            hjust = .5, vjust = 0),
-                  axis.title.y = element_text(angle = 90, hjust = 0.5)) +
-            xlab(bquote(.(xlab) ~  symbol("\256"))) +
-            ylab(bquote(.(ylab) ~  symbol("\256")))
+        p <- ggplot2::ggplot(col.matrix.plot, ggplot2::aes(X, Y, fill = HEXCode)) +
+            ggplot2::geom_tile() +
+            ggplot2::scale_fill_identity() +
+            ggplot2::coord_equal(expand = FALSE) +
+            ggplot2::theme_void() +
+            ggplot2::theme(aspect.ratio = 1,
+                           axis.title = ggplot2::element_text(size = 12, colour = "black",
+                                                     hjust = .5, vjust = 0),
+                           axis.title.y = ggplot2::element_text(angle = 90, hjust = 0.5)) +
+            ggplot2::xlab(bquote(.(xlab) ~  symbol("\256"))) +
+            ggplot2::ylab(bquote(.(ylab) ~  symbol("\256")))
         print(p)
         assign(
             x = "BivLegend",
@@ -90,9 +86,9 @@ bivarmap_colmatrix <- function(nbreaks = 3,
 
     # Use saveLeg if you want to save a copy of the legend
     if (saveLeg) {
-        ggsave(filename = "bivLegend.pdf", plot = p, device = "pdf",
-               path = "./", width = 4, height = 4, units = "in",
-               dpi = 300)
+        ggplot2::ggsave(filename = "bivLegend.pdf", plot = p, device = "pdf",
+                        path = "./", width = 4, height = 4, units = "in",
+                        dpi = 300)
     }
 
     seqs <- seq(0, 100, (100 / nbreaks))
