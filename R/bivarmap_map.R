@@ -5,15 +5,13 @@ bivarmap_map <- function(bivarmap, colmat,
                          x_legend_size = .2,
                          y_legend_size = .2){
 
-    library(ggplot2)
-
     # Convert to dataframe for plotting with ggplot
     bivarmap_data <- raster::as.data.frame(bivarmap, xy = TRUE)
     colnames(bivarmap_data)[3] <- "bivarmap_values"
 
     # Make the map using ggplot
-    bivarmap_gg <- ggplot2::ggplot(bivarmap_data, aes(x = x, y = y)) +
-        ggplot2::geom_raster(aes(fill = bivarmap_values)) +
+    bivarmap_gg <- ggplot2::ggplot(bivarmap_data, ggplot2::aes(x = x, y = y)) +
+        ggplot2::geom_raster(ggplot2::aes(fill = bivarmap_values)) +
         ggplot2::scale_fill_gradientn(colours = colmat, na.value = "transparent") +
         ggplot2::theme_bw() +
         ggplot2::theme(text = ggplot2::element_text(size = 10, colour = "black"),
