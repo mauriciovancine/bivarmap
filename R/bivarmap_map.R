@@ -1,5 +1,6 @@
 #' @export
-bivarmap_map <- function(bivarmap, colmat,
+bivarmap_map <- function(bivarmap,
+                         colmat,
                          x_legend_pos = 0,
                          y_legend_pos = 0,
                          x_legend_size = .2,
