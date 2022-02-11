@@ -2,12 +2,12 @@
 % Please edit documentation in R/bivarmap_raster.R
 \name{bivarmap_raster}
 \alias{bivarmap_raster}
-\title{Divide cells of a raster in classes}
+\title{Creates a bivariate raster}
 \usage{
 bivarmap_raster(
   rasterx,
   rastery,
-  colourmatrix = col.matrix,
+  colmatrix = col.matrix,
   export.colour.matrix = TRUE,
   outname = paste0("colMatrix_rasValues", names(rasterx))
 )
@@ -21,11 +21,13 @@ Support to \code{SpatRaster} to be added.}
 y (second) axis or variable of the bivariate plot.
 Support to \code{SpatRaster} to be added.}
 
-\item{colourmatrix}{\verb{[matrix]} \cr Matrix of colors to be used in the raster
+\item{colmatrix}{\verb{[matrix]} \cr Matrix of colors to be used in the raster
 classification and plot, created with \code{\link[=colmatrix]{colmatrix()}}.}
 }
 \value{
-A \code{RasterLayer} with ...
+A \code{RasterLayer} representing the bivariate map classified
+accordingly with selected classes for each variable, for bivariate
+map plotting.
 }
 \description{
 Description... documentation to be continued.
