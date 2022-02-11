@@ -1,7 +1,26 @@
+#' Creates a bivariate raster
+#'
+#' Description... documentation to be continued.
+#'
+#' @param rasterx `[RasterLayer,SpatRaster]` \cr RasterLayer representing the
+#' x (first) axis or variable of the bivariate plot.
+#' Support to `SpatRaster` to be added.
+#' @param rastery `[RasterLayer,SpatRaster]` \cr RasterLayer representing the
+#' y (second) axis or variable of the bivariate plot.
+#' Support to `SpatRaster` to be added.
+#' @param colourmatrix `[matrix]` \cr Matrix of colors to be used in the raster
+#' classification and plot, created with [bivarmap::colmatrix()].
+#'
+#' @return A `RasterLayer` representing the bivariate map classified
+#' accordingly with selected classes for each variable, for bivariate
+#' map plotting.
+#'
+#' @examples examples/bivarmap_raster_example.R
+#'
 #' @export
 bivarmap_raster <- function(rasterx, rastery, colourmatrix = col.matrix,
-                          export.colour.matrix = TRUE,
-                          outname = paste0("colMatrix_rasValues", names(rasterx))) {
+                            export.colour.matrix = TRUE,
+                            outname = paste0("colMatrix_rasValues", names(rasterx))) {
 
     # TO DO - replace raster with terra #
     require(raster)

@@ -12,13 +12,13 @@
 #' values: "fixed", "equal", "pretty", "quantile", "kmeans", "hclust", "bclust",
 #' "fisher", "jenks", "dpih" or "headtails". (not sd???) For more information, see
 #' [classInt::classIntervals()].
-#' @upperleft,upperright,bottomleft,bottomright `[character(1)]` \cr
+#' @param upperleft,upperright,bottomleft,bottomright `[character(1)]` \cr
 #' Colors to be assigned to the upperleft, upperright, bottomleft, and bottomright
 #' corners of the color matrix. It can be a string with the name of a color or a
 #' hexadecimal values representing the color.
-#' @xlab,ylab `[character(1)]` \cr Label for the color matrix plot axes, x and y.
-#' @plotLeg `[logical(1)=TRUE]` \cr If `TRUE`, a preview of the legend is plotted.
-#' @saveLeg `[logical(1)=TRUE]` \cr Should the legend be saved in an external file?
+#' @param xlab,ylab `[character(1)]` \cr Label for the color matrix plot axes, x and y.
+#' @param plotLeg `[logical(1)=TRUE]` \cr If `TRUE`, a preview of the legend is plotted.
+#' @param saveLeg `[logical(1)=TRUE]` \cr Should the legend be saved in an external file?
 #' Default is `FALSE`.
 #'
 #' @return Matrix of colors to be used in bivariate map plots.
