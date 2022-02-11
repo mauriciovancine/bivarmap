@@ -8,7 +8,7 @@ Install:
 
 ```{r}
 install.packages("devtools")
-devtools::install_github("mauriciovancine/bivarmap")
+devtools::install_github("mauriciovancine/bivarmap", ref = "HEAD")
 ```
 Example of a bivariate cloropleth map.
 
