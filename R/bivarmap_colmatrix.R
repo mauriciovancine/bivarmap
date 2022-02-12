@@ -1,3 +1,34 @@
+#' Creates color matrix for bivariate map plots
+#'
+#' This function creates the matrix of colors to be used in
+#' bivariate maps plots. It created a matrix with `nbreaks` x `nbreaks`
+#' colors do be used to represent a gradient in two different
+#' continuous variables.
+#'
+#' @param nbreaks `[numeric(1)=3]` \cr Number of breaks for each dimension
+#' of the matrix.
+#' @param breakstyle `[character(1)="quantile"]` \cr Option to break each dimension
+#' of the matrix in class intervals to set the colors. It can assume any of the following
+#' values: "fixed", "equal", "pretty", "quantile", "kmeans", "hclust", "bclust",
+#' "fisher", "jenks", "dpih" or "headtails". (not sd???) For more information, see
+#' [classInt::classIntervals()].
+#' @param upperleft,upperright,bottomleft,bottomright `[character(1)]` \cr
+#' Colors to be assigned to the upperleft, upperright, bottomleft, and bottomright
+#' corners of the color matrix. It can be a string with the name of a color or a
+#' hexadecimal values representing the color.
+#' @param xlab,ylab `[character(1)]` \cr Label for the color matrix plot axes, x and y.
+#' @param plotLeg `[logical(1)=TRUE]` \cr If `TRUE`, a preview of the legend is plotted.
+#' @param saveLeg `[logical(1)=TRUE]` \cr Should the legend be saved in an external file?
+#' Default is `FALSE`.
+#'
+#' @return Matrix of colors to be used in bivariate map plots.
+#'
+#' @examples
+#' data("temprec")
+#'
+#' colmatrix <- bivarmap::bivarmap_colmatrix(nbreaks = 9)
+#' colmatrix
+#'
 #' @export
 bivarmap_colmatrix <- function(nbreaks = 3,
                                breakstyle = "quantile",

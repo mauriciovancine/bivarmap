@@ -1,13 +1,8 @@
-
-# pacote
-devtools::install_github("mauriciovancine/bivarmap", force = TRUE)
-library(bivarmap)
-
-# dados
+# data
 data("temprec")
 temprec
 
-# matriz de cores
+# color matrix
 colmatrix <- bivarmap::bivarmap_colmatrix(nbreaks = 9,
                                           xlab = "Temperatura",
                                           ylab = "Precipitação")
@@ -15,11 +10,11 @@ colmatrix
 
 # raster
 raster_col <- bivarmap::bivarmap_raster(rasterx = temprec$temp,
-                                       rastery = temprec$prec,
-                                       colourmatrix = colmatrix)
+                                        rastery = temprec$prec,
+                                        colourmatrix = colmatrix)
 raster_col
 
-# mapa
+# plot map
 bivarmap::bivarmap_map(bivarmap = raster_col,
                        colmat = colmatrix,
                        x_legend_pos = .1,
