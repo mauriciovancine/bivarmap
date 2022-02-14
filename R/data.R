@@ -11,7 +11,7 @@
 
 #' Hosts spatial data
 #'
-#' Global raster data with info from hosts...
+#' Global raster data with Sarbecovirus bat host species number estimated by ecological niche models for the present. 
 #'
 #' @format A Geotiff file. Geographic CRS: WGS84 (+proj=longlat +datum=WGS84 +no_defs).
 #' \itemize{
@@ -25,12 +25,12 @@
 #'
 #' @name hosts.tif
 #'
-#' @source \url{to_complete_here}
+#' @source \url{https://www.biorxiv.org/content/10.1101/2021.12.09.471691v1}
 NULL
 
 #' Bias data
 #'
-#' Raster data with bias from species distribution models. Bias here represents...
+#' Raster data with bias referring to sampling rates (residual bias) based on the distance from occurrences to roads, rivers, airports and cities.
 #'
 #' @format A Geotiff file. Geographic CRS: WGS84 (+proj=longlat +datum=WGS84 +no_defs).
 #' \itemize{
@@ -44,5 +44,5 @@ NULL
 #'
 #' @name bias.tif
 #'
-#' @source \url{to_complete_here}
+#' @source \url{https://www.biorxiv.org/content/10.1101/2021.12.09.471691v1}
 NULL
