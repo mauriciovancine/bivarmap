@@ -29,6 +29,9 @@ This function plots bivariate maps with their color matrix
 associated with gradients in the two variables or dimensions.
 }
 \examples{
+# package
+library(bivarmap)
+
 # data
 data("temprec")
 temprec
@@ -42,14 +45,17 @@ colmatrix
 # raster
 raster_col <- bivarmap::bivarmap_raster(rasterx = temprec$temp,
                                         rastery = temprec$prec,
-                                        colourmatrix = colmatrix)
+                                        colmatrix = colmatrix)
 raster_col
 
 # plot map
 bivarmap::bivarmap_map(bivarmap = raster_col,
                        colmat = colmatrix,
-                       x_legend_pos = .1,
+                       x_legend_pos = .2,
                        y_legend_pos = .1,
                        x_legend_size = .3,
                        y_legend_size = .3)
+
+plot(raster_col)
+plot(temprec)
 }
