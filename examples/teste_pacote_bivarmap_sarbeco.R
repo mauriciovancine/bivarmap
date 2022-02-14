@@ -1,47 +1,44 @@
 # download package
 #devtools::install_github("mauriciovancine/bivarmap", force = TRUE)
 
-# open package
+# open packages
 library(raster)
 
 rasts_folder <- system.file("raster", package = "bivarmap")
-temp <- list.files(rasts_folder, pattern = ".tif$", full.names = T)
 
-allr = lapply(temp, raster::raster)
-b <- raster::brick(raster::resample(allr[["hosts"]], allr[[1]]), allr[[1]])
-
-# Re, I would prefer that (for readability for users), even at the expense of a few lines of code:
+# open hosts raster
 ho <- system.file("raster/hosts.tif", package = "bivarmap")
 hosts <- raster::raster(ho)
 
+# open bias raster
 bi <- system.file("raster/bias.tif", package = "bivarmap")
 bias <- raster::raster(bi)
 
 # resample, since the maps have different resolution
 b <- raster::brick(raster::resample(hosts, bias), bias)
 
-# Set projection
+# set projection
 raster::crs(b) <- '+proj=longlat +datum=WGS84 +no_defs '
 
-options(digits=3)
+# transorm data to proportions
+b[[1]] <- b[[1]]/ max(na.omit(values(b[[1]])))
+b[[2]] <- b[[2]]/ max(na.omit(values(b[[2]])))
 
-quantile(b[[1]])
-quantile(b[[2]])
-
+# plot separate rasters
 plot(b, col = viridis::viridis(10))
 
 # color matrix
 colmatrix <- bivarmap::bivarmap_colmatrix(nbreaks = 10,
-                                          # upperleft = "cyan",
-                                          # upperright = "purple",
-                                          # bottomleft = "beige",
-                                          # bottomright = "brown1",
+                                           upperleft = "cyan",
+                                           upperright = "purple",
+                                           bottomleft = "beige",
+                                           bottomright = "brown1",
                                           xlab = names(b)[1],
                                           ylab = names(b)[2])
 colmatrix
 
 # raster
-raster_col <- bivarmap::bivarmap_raster(rasterx = log1p(b[[1]]),
+raster_col <- bivarmap::bivarmap_raster(rasterx = b[[1]],
                                         rastery = b[[2]],
                                         colmatrix = colmatrix)
 raster_col
@@ -54,8 +51,10 @@ bivarmap::bivarmap_map(bivarmap = raster_col,
                        x_legend_size = .2,
                        y_legend_size = .2)
 
-# comparacao --------------------------------------------------------------
 
+# comparison with dynamic repo code --------------------------------------------------------------
+#https://github.com/renatamuy/dynamic/blob/main/distribution_models/023_pos_fig_bivariate.R
+#
 ## functions
 # colmat
 # colmat <- function(nquantiles = 10,
