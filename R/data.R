@@ -14,10 +14,6 @@
 #' Global raster data with Sarbecovirus bat host species number estimated by ecological niche models for the present. 
 #'
 #' @format A Geotiff file. Geographic CRS: WGS84 (+proj=longlat +datum=WGS84 +no_defs).
-#' \itemize{
-#'         \item{1:} {Presence of cabins}
-#'         \item{NA:} {No presence of cabins}
-#' }
 #'
 #' @examples
 #' (f <- system.file("raster/hosts.tif", package = "bivarmap"))
@@ -33,10 +29,6 @@ NULL
 #' Raster data with bias referring to sampling rates (residual bias) based on the distance from occurrences to roads, rivers, airports and cities.
 #'
 #' @format A Geotiff file. Geographic CRS: WGS84 (+proj=longlat +datum=WGS84 +no_defs).
-#' \itemize{
-#'         \item{1:} {Presence of cabins}
-#'         \item{NA:} {No presence of cabins}
-#' }
 #'
 #' @examples
 #' (f <- system.file("raster/bias.tif", package = "bivarmap"))
