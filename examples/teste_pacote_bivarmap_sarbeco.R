@@ -28,10 +28,10 @@ plot(b, col = viridis::viridis(10))
 
 # color matrix
 colmatrix <- bivarmap::bivarmap_colmatrix(nbreaks = 10,
-                                          upperleft = "cyan",
-                                          upperright = "purple",
-                                          bottomleft = "beige",
-                                          bottomright = "brown1",
+                                          # upperleft = "cyan",
+                                          # upperright = "purple",
+                                          # bottomleft = "beige",
+                                          # bottomright = "brown1",
                                           xlab = names(b)[1],
                                           ylab = names(b)[2])
 colmatrix
@@ -39,16 +39,16 @@ colmatrix
 # raster
 raster_col <- bivarmap::bivarmap_raster(rasterx = log1p(b[[1]]),
                                         rastery = b[[2]],
-                                        colourmatrix = colmatrix)
+                                        colmatrix = colmatrix)
 raster_col
 
 # map
 bivarmap::bivarmap_map(bivarmap = raster_col,
                        colmat = colmatrix,
-                       x_legend_pos = .07,
-                       y_legend_pos = .13,
-                       x_legend_size = .15,
-                       y_legend_size = .15)
+                       x_legend_pos = .01,
+                       y_legend_pos = .1,
+                       x_legend_size = .2,
+                       y_legend_size = .2)
 
 # comparacao --------------------------------------------------------------
 

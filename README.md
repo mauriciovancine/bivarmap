@@ -13,5 +13,5 @@ devtools::install_github("mauriciovancine/bivarmap", ref = "HEAD")
 Example of a bivariate cloropleth map.
 
 <p align="center"> 
-<img width="550" src="/image.png">
+<img width="550" src="img/image.png">
 </p> 
