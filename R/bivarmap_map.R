@@ -29,6 +29,7 @@ bivarmap_map <- function(bivarmap,
     bivarmap_gg <- ggplot2::ggplot(bivarmap_data, ggplot2::aes(x = x, y = y)) +
         ggplot2::geom_raster(ggplot2::aes(fill = bivarmap_values)) +
         ggplot2::scale_fill_gradientn(colours = colmatrix, na.value = "transparent") +
+        ggplot2::coord_equal() +
         ggplot2::theme_bw() +
         ggplot2::theme(text = ggplot2::element_text(size = 10, colour = "black"),
                        legend.position = "none",
