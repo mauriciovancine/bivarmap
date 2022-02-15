@@ -2,23 +2,24 @@
 #devtools::install_github("mauriciovancine/bivarmap", force = TRUE)
 
 # open packages
-library(raster)
+library(terra)
 
 rasts_folder <- system.file("raster", package = "bivarmap")
 
 # open hosts raster
 ho <- system.file("raster/hosts.tif", package = "bivarmap")
-hosts <- raster::raster(ho)
+hosts <- terra::rast(ho)
 
 # open bias raster
 bi <- system.file("raster/bias.tif", package = "bivarmap")
-bias <- raster::raster(bi)
+bias <- terra::rast(bi)
 
 # resample, since the maps have different resolution
-b <- raster::brick(raster::resample(hosts, bias), bias)
+b <- terra::resample(hosts, bias) %>%
+    c(bias)
 
 # set projection
-raster::crs(b) <- '+proj=longlat +datum=WGS84 +no_defs '
+terra::crs(b) <- '+proj=longlat +datum=WGS84 +no_defs '
 
 # transorm data to proportions
 b[[1]] <- b[[1]]/ max(na.omit(values(b[[1]])))
@@ -29,10 +30,10 @@ plot(b, col = viridis::viridis(10))
 
 # color matrix
 colmatrix <- bivarmap::bivarmap_colmatrix(nbreaks = 10,
-                                           upperleft = "cyan",
-                                           upperright = "purple",
-                                           bottomleft = "beige",
-                                           bottomright = "brown1",
+                                          upperleft = "cyan",
+                                          upperright = "purple",
+                                          bottomleft = "beige",
+                                          bottomright = "brown1",
                                           xlab = names(b)[1],
                                           ylab = names(b)[2])
 colmatrix
