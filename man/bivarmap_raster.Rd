@@ -8,21 +8,25 @@ bivarmap_raster(
   rasterx,
   rastery,
   colmatrix = col.matrix,
-  export.colour.matrix = TRUE,
+  export.col.matrix = TRUE,
   outname = paste0("colMatrix_rasValues", names(rasterx))
 )
 }
 \arguments{
-\item{rasterx}{\verb{[RasterLayer,SpatRaster]} \cr RasterLayer representing the
-x (first) axis or variable of the bivariate plot.
-Support to \code{SpatRaster} to be added.}
+\item{rasterx}{\verb{[RasterLayer,SpatRaster]} \cr \code{RasterLayer} object (from \link{raster} package)
+or \code{SpatRaster} (from \link{terra} package) representing the x (first) axis or variable
+of the bivariate plot.}
 
-\item{rastery}{\verb{[RasterLayer,SpatRaster]} \cr RasterLayer representing the
-y (second) axis or variable of the bivariate plot.
-Support to \code{SpatRaster} to be added.}
+\item{rastery}{\verb{[RasterLayer,SpatRaster]} \cr \code{RasterLayer} object (from \link{raster} package)
+or \code{SpatRaster} (from \link{terra} package) representing the y (second) axis or variable
+of the bivariate plot.}
 
 \item{colmatrix}{\verb{[matrix]} \cr Matrix of colors to be used in the raster
 classification and plot, created with \code{\link[=colmatrix]{colmatrix()}}.}
+
+\item{export.col.matrix}{To be documented.}
+
+\item{outname}{To be documented}
 }
 \value{
 A \code{RasterLayer} representing the bivariate map classified
