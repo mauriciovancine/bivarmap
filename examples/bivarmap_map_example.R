@@ -24,6 +24,3 @@ bivarmap::bivarmap_map(bivarmap = raster_col,
                        y_legend_pos = .1,
                        x_legend_size = .3,
                        y_legend_size = .3)
-
-plot(raster_col)
-plot(temprec)

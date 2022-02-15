@@ -12,6 +12,7 @@
 #' bivariate color matrix, which is optionally also plotted.
 #'
 #' @example examples/bivarmap_map_example.R
+#' @example examples/bivarmap_map_example2.R
 #'
 #' @export
 bivarmap_map <- function(bivarmap,
