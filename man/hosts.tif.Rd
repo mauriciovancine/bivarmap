@@ -5,19 +5,16 @@
 \title{Hosts spatial data}
 \format{
 A Geotiff file. Geographic CRS: WGS84 (+proj=longlat +datum=WGS84 +no_defs).
-\itemize{
-\item{1:} {Presence of cabins}
-\item{NA:} {No presence of cabins}
-}
 }
 \source{
-\url{to_complete_here}
+\url{https://www.biorxiv.org/content/10.1101/2021.12.09.471691v1}
 }
 \description{
-Global raster data with info from hosts...
+Global raster data with Sarbecovirus bat host species number estimated
+by ecological niche models for the present.
 }
 \examples{
 (f <- system.file("raster/hosts.tif", package = "bivarmap"))
-raster::raster(f)
+terra::rast(f)
 
 }
